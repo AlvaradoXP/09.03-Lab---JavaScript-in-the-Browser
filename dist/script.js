@@ -1,56 +1,42 @@
-// This is a simple JavaScript file that adds interactivity to the HTML page
-// It defines a function to show an alert when a link is clicked
-function sayHello() {
-    alert("Hello, world from javascript!");
-}
-// This function will be called when the link is clicked
-// It shows an alert with a message
-// Ensure the DOM is fully loaded before attaching the event listener
-document.addEventListener("DOMContentLoaded", function() {
-    const link = document.getElementById("hello-link");
-    if (!link) {
-        console.error("Link with ID 'hello-link' not found.");
-        return;
+let submit = document.getElementById("submit");
+
+function myLineUp(event) {
+    console.log("submitted");
+    /*Checks which status radio was selected*/
+    if (document.getElementById("status-draft").checked)
+    {
+        console.log("Draft");
     }
-    link.addEventListener("click", function(event) {
-        event.preventDefault(); // Prevent the default link behavior
-        sayHello();
-    });
-});
+    else 
+    {
+        console.log("Final");
+    }
 
-async function getRandomJoke() {
-    return fetch('https://icanhazdadjoke.com/', {
-        headers: {
-            'Accept': 'text/plain'
-        }
-    })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-        return response.text();
-    })
-    .catch(error => {
-        console.error('There was a problem fetching the joke:', error);
-        return "Failed to fetch a joke. Please try again later.";
-    });
+    /*Checks the drop-menu date selected*/
+    let date = document.getElementById("date-options").value;
+    console.log(date);
+
+    /*Checks the checkbox options selected, played it safe with lots of if statements*/
+    if (document.getElementById("player1").checked)
+    {
+        console.log("Aarav Agarwal");
+    }
+    if (document.getElementById("player2").checked)
+    {
+        console.log("Ava Johnson");
+    }
+    if (document.getElementById("player3").checked)
+    {
+        console.log("Julio Ortiz");
+    }
+    if (document.getElementById("player4").checked)
+    {
+        console.log("Liam Rubio");
+    }
+    if (document.getElementById("player5").checked)
+    {
+        console.log("Emma Witherspoon");
+    }
 }
 
-document.addEventListener("DOMContentLoaded", function() {
-    const jokeButton = document.getElementById("joke-button");
-    if (!jokeButton) {
-        console.error("Button with ID 'joke-button' not found.");
-        return;
-    }
-    jokeButton.addEventListener("click", async function() {
-
-            const jokeDisplay = document.getElementById("joke-display");
-            if (!jokeDisplay) {
-                console.error("Element with ID 'joke-display' not found.");
-                return;
-            }
-            jokeDisplay.textContent = "Loading joke...";
-            const joke = await getRandomJoke();
-            jokeDisplay.textContent = joke;
-    });
-});
+submit.addEventListener("click", myLineUp);
